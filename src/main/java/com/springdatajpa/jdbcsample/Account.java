@@ -18,7 +18,7 @@ public class Account {
   @Temporal(TemporalType.TIMESTAMP)
   private Date created = new Date();
 
-  @OneToMany
+  @OneToMany(mappedBy = "owner")
   private Set<Study> studies = new HashSet<Study>();
 
   @Embedded
@@ -72,6 +72,16 @@ public class Account {
 
   public void setStudies(Set<Study> studies) {
     this.studies = studies;
+  }
+
+  public void addStudy(Study study) {
+    this.getStudies().add(study);
+    study.setOwner(this);
+  }
+
+  public void removeStudy(Study study) {
+    this.getStudies().remove(study);
+    study.setOwner(null);
   }
 
 }
