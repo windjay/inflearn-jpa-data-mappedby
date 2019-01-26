@@ -54,8 +54,25 @@ public class JpaRunner implements ApplicationRunner {
 //    post.addComment(comment2);
 
     Session session = entityManager.unwrap(Session.class);
-    Post post = session.get(Post.class, 1L);
-    session.delete(post);
+    Post post = session.get(Post.class, 4L);
+//    session.delete(post);
+//    session.save(post);
+    System.out.println("==================================");
+    System.out.println(post.getTitle());
+    System.out.println("==================================");
+
+    post.getComments().forEach(comment -> {
+      System.out.println("========================");
+      System.out.println(comment.getComment());
+      System.out.println("========================");
+    });
+
+
+//    Comment comment = session.get(Comment.class, 5l);
+//    System.out.println("===========================");
+//    System.out.println(comment.getComment());
+//    System.out.println(comment.getPost().getTitle());
+//    System.out.println("===========================");
 
   }
 }
