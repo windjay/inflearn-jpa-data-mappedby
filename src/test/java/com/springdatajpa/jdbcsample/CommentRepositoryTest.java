@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -14,24 +15,26 @@ import java.util.List;
 @DataJpaTest
 public class CommentRepositoryTest {
 
-
   @Autowired
   CommentRepository commentRepository;
 
   @Test
-  public void crdu() {
-    Comment comment = new Comment();
-    comment.setComment("comment1");
+  @Rollback(false)
+  public void crud() {
+    createComment("spring comment1", 10);
+    createComment("spring comment1", 55);
 
-    commentRepository.save(comment);
+    List<Comment> spring = commentRepository.findByCommentContainsIgnoreCaseOrderByLikeCountDesc("Spring");
+    spring.forEach(System.out::println);
 
-    List<Comment> findAll = commentRepository.findAll();
-
-    Assertions.assertThat(findAll.size()).isEqualTo(1);
-
-
-
+    Assertions.assertThat(spring).first().hasFieldOrPropertyWithValue("LikeCount", 55);
 
   }
 
+  private void createComment(String commentDesc, int i) {
+    Comment comment = new Comment();
+    comment.setComment(commentDesc);
+    comment.setLikeCount(i);
+    commentRepository.save(comment);
+  }
 }

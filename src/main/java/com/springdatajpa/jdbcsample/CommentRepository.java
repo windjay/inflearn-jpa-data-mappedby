@@ -1,14 +1,13 @@
 package com.springdatajpa.jdbcsample;
 
-import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-@RepositoryDefinition(domainClass = Comment.class, idClass = Long.class)
-public interface CommentRepository {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-  Comment save(Comment comment);
+  List<Comment> findByCommentContainsIgnoreCaseOrderByLikeCountDesc(String key);
 
-  List<Comment> findAll();
+
 
 }
