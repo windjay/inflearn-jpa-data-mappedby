@@ -23,5 +23,17 @@ public class SpringJpaRunner implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     postRepository.findAll().forEach(System.out::println);
+
+
+    Post post = new Post();
+    post.setTitle("Spring JPA Start");
+
+    Comment comment = new Comment();
+    comment.setComment("Fist comment of JPA");
+    comment.setPost(post);
+
+    postRepository.save(post);
+
+
   }
 }

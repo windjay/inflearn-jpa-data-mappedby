@@ -7,32 +7,32 @@ import java.util.Set;
 
 @Entity
 public class Account {
-  @Id @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-  // 생략됨
-  @Column(nullable = false, unique = true)
-  private String username;
-  private String password;
+    // 생략됨
+    @Column(nullable = false, unique = true)
+    private String username;
+    private String password;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date created = new Date();
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created = new Date();
 
-  @OneToMany(mappedBy = "owner")
-  private Set<Study> studies = new HashSet<Study>();
+    @OneToMany(mappedBy = "owner")
+    private Set<Study> studies = new HashSet<Study>();
 
-  @Embedded
-  @AttributeOverrides({
-          @AttributeOverride(name = "street", column = @Column(name = "home_street"))
-  })
-  private Address address;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "home_street"))
+    })
+    private Address address;
 
 
-  @Transient
-  private String yes;
+    @Transient
+    private String yes;
 
-  @Transient
-  private String no;
+    @Transient
+    private String no;
 
   public Date getCreated() {
     return created;
