@@ -19,6 +19,9 @@ public class JpaRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
+    /**
+     * 아래는 Hibernate API 를 사용했다...
+     */
 /*    Account account = new Account();
     account.setUsername("windjay");
     account.setPassword("hibernate");
