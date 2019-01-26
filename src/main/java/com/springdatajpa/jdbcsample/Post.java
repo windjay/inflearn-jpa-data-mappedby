@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 public class Post {
-
   @Id @GeneratedValue
   private Long id;
 
@@ -46,5 +45,13 @@ public class Post {
 
   public void setComments(Set<Comment> comments) {
     this.comments = comments;
+  }
+
+  @Override
+  public String toString() {
+    return "Post{" +
+            "title='" + title + '\'' +
+//            ", comments=" + comments +
+            '}';
   }
 }
