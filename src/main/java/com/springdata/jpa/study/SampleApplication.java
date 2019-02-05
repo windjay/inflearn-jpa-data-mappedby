@@ -1,4 +1,4 @@
-package com.springdatajpa.jdbcsample;
+package com.springdata.jpa.study;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;

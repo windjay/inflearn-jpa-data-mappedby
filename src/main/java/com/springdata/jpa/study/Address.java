@@ -1,4 +1,4 @@
-package com.springdatajpa.jdbcsample;
+package com.springdata.jpa.study;
 
 import javax.persistence.Embeddable;
 

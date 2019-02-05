@@ -1,4 +1,4 @@
-package com.springdatajpa.jdbcsample;
+package com.springdata.jpa.study;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +47,6 @@ public class SpringJpaRunnerTest {
     assertThat(all1.getTotalPages()).isEqualTo(1);
     assertThat(all1.getNumber()).isEqualTo(0);
     assertThat(all1.getSize()).isEqualTo(10);
-
 
   }
 }
